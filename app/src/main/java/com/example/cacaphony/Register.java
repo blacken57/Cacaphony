@@ -149,7 +149,7 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
                             userID = mFAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("Delivery").document(userID);
+                            DocumentReference documentReference = fStore.collection("Customers").document(userID);
                             Map<String,Object> user = new HashMap<>();
                             user.put("fName",name);
                             user.put("email",Emails);
