@@ -38,8 +38,8 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
     public static final String TAG = "TAG";
-    private static final int RC_SIGN_IN_C = 1;
-    private static final int RC_SIGN_IN_D = 0 ;
+    private static final int RC_SIGN_IN_D = 0;
+    private static final int RC_SIGN_IN_C = 1 ;
     private EditText mEmail, mPassword;
     GoogleSignInClient mGoogleSignInClient;
     SignInButton mGoogleCust, mGoogleDel;
@@ -115,14 +115,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN_C);
+                startActivityForResult(signInIntent, RC_SIGN_IN_D);
             }
         });
         mGoogleCust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN_D);
+                startActivityForResult(signInIntent, RC_SIGN_IN_C);
             }
         });
     }
