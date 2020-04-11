@@ -147,6 +147,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_D);
+                startActivity(new Intent(Login.this, MainActivity.class));
             }
         });
         mGoogleCust.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +155,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_C);
+                startActivity(new Intent(Login.this, CustomerDashboard.class));
             }
         });
     }
@@ -209,7 +211,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "User Singed in", Toast.LENGTH_SHORT).show();
                             getUserDetails(user, RC_SIGN_IN_D);
                             //starts delivery's activity
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            //startActivity(new Intent(Login.this, MainActivity.class));
                         }
                         else {
                             Toast.makeText(Login.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
