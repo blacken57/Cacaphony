@@ -14,8 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cacaphony.Login;
-import com.example.cacaphony.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,10 +42,10 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mFullName = findViewById(R.id.fullName);
+        mFullName = findViewById(R.id.fullNameEdit);
         mEmail = findViewById(R.id.Email);
-        mPhone = findViewById(R.id.phone);
-        mPassword = findViewById(R.id.pass);
+        mPhone = findViewById(R.id.phoneEdit);
+        mPassword = findViewById(R.id.passEdit);
         mRegisterCust = findViewById(R.id.registercustomer);
         mRegisterDel = findViewById(R.id.registeringDel);
         mLoginButton   = findViewById(R.id.textView254);

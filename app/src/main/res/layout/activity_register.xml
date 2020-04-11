@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.19" />
 
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/fullNameEdit"
         android:layout_width="309dp"
         android:layout_height="52dp"
         android:ems="10"
@@ -49,11 +49,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.578" />
 
     <EditText
-        android:id="@+id/pass"
+        android:id="@+id/passEdit"
         android:layout_width="314dp"
         android:layout_height="54dp"
         android:ems="10"
@@ -64,16 +64,17 @@
         app:layout_constraintHorizontal_bias="0.67"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <Button
         android:id="@+id/registercustomer"
         android:layout_width="127dp"
         android:layout_height="63dp"
+        android:layout_marginBottom="120dp"
         android:text="Register as Customer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass"
         app:layout_constraintVertical_bias="0.422" />
@@ -82,10 +83,11 @@
         android:id="@+id/registeringDel"
         android:layout_width="127dp"
         android:layout_height="63dp"
+        android:layout_marginBottom="116dp"
         android:text="Register as Delivery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass"
         app:layout_constraintVertical_bias="0.424" />
@@ -115,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView254" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/phoneEdit"
         android:layout_width="306dp"
         android:layout_height="58dp"
         android:ems="10"
@@ -123,9 +125,9 @@
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/registercustomer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
