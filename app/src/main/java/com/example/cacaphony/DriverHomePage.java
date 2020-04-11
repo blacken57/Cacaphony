@@ -5,12 +5,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
-public class DriverHomePage extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+
+public class DriverHomePage extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,10 @@ public class DriverHomePage extends AppCompatActivity {
         if(mToggle.onOptionsItemSelected(item)){
             return true;
         }
-        return super.onOptionsItemSelected(item);
-    }
+       /* switch(item.getItemId()){
+            case R.id.order:
+                startActivity(new Intent(DriverHomePage.this, DriverOrders.class));
+        }*/
+
+        return super.onOptionsItemSelected(item);}
 }
