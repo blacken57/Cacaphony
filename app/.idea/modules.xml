@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Cacaphony.iml" filepath="$PROJECT_DIR$/../Cacaphony.iml" group="Cacaphony" />
+      <module fileurl="file://$PROJECT_DIR$/Cacaphony-app.iml" filepath="$PROJECT_DIR$/Cacaphony-app.iml" group="Cacaphony/app" />
+      <module fileurl="file://$PROJECT_DIR$/../Cacaphony3-Cacaphony.iml" filepath="$PROJECT_DIR$/../Cacaphony3-Cacaphony.iml" group="Cacaphony" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="Cacaphony/app" />
     </modules>
   </component>

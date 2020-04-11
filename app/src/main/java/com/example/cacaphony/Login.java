@@ -114,7 +114,7 @@ public class Login extends AppCompatActivity {
                                             }
                                             else
                                             {
-                                                startActivity(new Intent(getApplicationContext(), CustomerLocation.class));
+                                                startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
                                             }
 
                                         } else {
