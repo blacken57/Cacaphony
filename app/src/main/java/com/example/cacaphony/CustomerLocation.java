@@ -126,7 +126,7 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                 user.put("Person1Lat",lati);
                 documentReference.set(user, SetOptions.merge());
 
-                /*fStore.collection("Customers").whereEqualTo("Customer", 0)
+                fStore.collection("Customers").whereEqualTo("Customer", 0)
                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -134,8 +134,8 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                             startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
                              }
                     }
-                });*/
-                startActivity(new Intent(getApplicationContext(),DriverHomePage.class));
+                });
+//                startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
             }
         });
     }
