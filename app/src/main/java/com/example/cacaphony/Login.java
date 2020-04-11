@@ -15,12 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cacaphony.R;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,13 +34,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAGGING IN HERE";
     private static final int RC_SIGN_IN_D = 0;
     private static final int RC_SIGN_IN_C = 1 ;
     private EditText mEmail, mPassword;
@@ -49,6 +53,7 @@ public class Login extends AppCompatActivity {
     String userID;
     FirebaseFirestore fStore;
     TextView mRegisterButton;
+    double cust;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class Login extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         mProgressBar = findViewById(R.id.progressBar);
         mRegisterButton = findViewById(R.id.Reg);
+
 
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +101,35 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        } else {
-                            Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            mProgressBar.setVisibility(View.GONE);
+                            String userId = mFAuth.getCurrentUser().getUid();
+
+                            DocumentReference documentReference = fStore.collection("Customers").document(userId);
+                            documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot document = task.getResult();
+                                        if (document.exists()) {
+                                            cust = document.getDouble("Customer");
+                                            Log.d(TAG, "The value of cust is: "+ cust);
+                                            if(cust == 1)
+                                            {
+                                                startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                                            }
+                                            else
+                                            {
+                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            }
+
+                                        } else {
+                                            Log.d(TAG, "No such document");
+                                        }
+                                    } else {
+                                        Log.d(TAG, "get failed with ", task.getException());
+                                    }
+                                }
+                            });
+
                         }
 
                     }
