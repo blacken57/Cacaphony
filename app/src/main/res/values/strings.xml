@@ -2,4 +2,6 @@
     <string name="app_name">Cacaphony</string>
     <string name="title_activity_maps">Map</string>
     <string name="api_key">AIzaSyALYQljTGQjYbgppRtCTc4dBZrTnoS7Bcg</string>
+    <string name="open">Open</string>
+    <string name="close">CLose</string>
 </resources>

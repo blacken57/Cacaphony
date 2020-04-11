@@ -1,5 +1,6 @@
 package com.example.cacaphony;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -16,13 +17,17 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -43,6 +48,7 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
     double lati,longi;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     Button mLoc;
+    double cust;
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -120,11 +126,18 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                 user.put("Person1Lat",lati);
                 documentReference.set(user, SetOptions.merge());
 
-                startActivity(new Intent(getApplicationContext(),Login.class));
+                /*fStore.collection("Customers").whereEqualTo("Customer", 0)
+                        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
+                             }
+                    }
+                });*/
+                startActivity(new Intent(getApplicationContext(),DriverHomePage.class));
             }
         });
-
-
     }
 
     @Override
