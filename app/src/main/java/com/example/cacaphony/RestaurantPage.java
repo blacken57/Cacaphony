@@ -95,7 +95,35 @@ public class RestaurantPage extends AppCompatActivity {
                 user.put("UserName",name);
                 user.put("UserPhone",phone);
                 documentReference.set(user);
-                startActivity(new Intent(getApplicationContext(),CustomerDashboard.class));
+                startActivity(new Intent(getApplicationContext(),CustomerLocation.class));
+            }
+        });
+        two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DocumentReference documentReference = fStore.collection("Orders").document(UserID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("RestroID", ID[1]);
+                user.put("Restaurant",Rests[1]);
+                user.put("UserID",UserID);
+                user.put("UserName",name);
+                user.put("UserPhone",phone);
+                documentReference.set(user);
+                startActivity(new Intent(getApplicationContext(),CustomerLocation.class));
+            }
+        });
+        three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DocumentReference documentReference = fStore.collection("Orders").document(UserID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("RestroID", ID[2]);
+                user.put("Restaurant",Rests[2]);
+                user.put("UserID",UserID);
+                user.put("UserName",name);
+                user.put("UserPhone",phone);
+                documentReference.set(user);
+                startActivity(new Intent(getApplicationContext(),CustomerLocation.class));
             }
         });
     }

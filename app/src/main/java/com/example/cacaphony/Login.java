@@ -221,8 +221,8 @@ public class Login extends AppCompatActivity {
         Map<String,Object> users = new HashMap<>();
         users.put("fName", acct.getDisplayName() );
         users.put("email", acct.getEmail());
-        users.put("password", 0);
-        users.put("Phone number", 0);
+        users.put("password", "0");
+        users.put("Phone number", "0");
         users.put("Customer", i);
         documentReference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
