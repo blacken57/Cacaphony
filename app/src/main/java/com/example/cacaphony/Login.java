@@ -108,12 +108,15 @@ public class Login extends AppCompatActivity {
                                         if (document.exists()) {
                                             cust = document.getDouble("Customer");
                                             Log.d(TAG, "The value of cust is: "+ cust);
-                                            if(cust == 1) {
+                                            if(cust == 1)
+                                            {
                                                 startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
                                             }
-                                            else {
-                                                startActivity(new Intent(getApplicationContext(), CustomerLocation.class));
+                                            else
+                                            {
+                                                startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
                                             }
+
                                         } else {
                                             Log.d(TAG, "No such document");
                                         }
@@ -207,6 +210,7 @@ public class Login extends AppCompatActivity {
                         else {
                             Toast.makeText(Login.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
     }
@@ -217,8 +221,8 @@ public class Login extends AppCompatActivity {
         Map<String,Object> users = new HashMap<>();
         users.put("fName", acct.getDisplayName() );
         users.put("email", acct.getEmail());
-        users.put("password", 0);
-        users.put("Phone number", 0);
+        users.put("password", "0");
+        users.put("Phone number", "0");
         users.put("Customer", i);
         documentReference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

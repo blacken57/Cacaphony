@@ -24,13 +24,14 @@ public class CustomerDashboard extends AppCompatActivity {
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
     String name;
-    Button Settings;
+    Button Settings,Restaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_dashboard);
         Settings = findViewById(R.id.set);
+        Restaurant = findViewById(R.id.Restros);
         mName = findViewById(R.id.name);
         mFAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -60,5 +61,11 @@ public class CustomerDashboard extends AppCompatActivity {
             }
         });
 
+        Restaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RestaurantPage.class));
+            }
+        });
     }
 }

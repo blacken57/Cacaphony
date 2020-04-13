@@ -119,11 +119,11 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                 fStore = FirebaseFirestore.getInstance();
                 FirebaseAuth mFAuth = FirebaseAuth.getInstance();
                 String userID = mFAuth.getCurrentUser().getUid();
-                DocumentReference documentReference = fStore.collection("Customers").document(userID);
+                DocumentReference documentReference = fStore.collection("Orders").document(userID);
                 Log.d(TAG, "Data ready to be put " );
                 Map<String,Object> user = new HashMap<>();
-                user.put("Person1Long",longi);
-                user.put("Person1Lat",lati);
+                user.put("Longitude",longi);
+                user.put("Latitude",lati);
                 documentReference.set(user, SetOptions.merge());
 
                 fStore.collection("Customers").whereEqualTo("Customer", 0)
@@ -131,8 +131,9 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
                              }
+                        else{startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));}
                     }
                 });
 //                startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
