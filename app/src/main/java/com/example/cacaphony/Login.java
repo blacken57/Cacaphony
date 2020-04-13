@@ -108,15 +108,12 @@ public class Login extends AppCompatActivity {
                                         if (document.exists()) {
                                             cust = document.getDouble("Customer");
                                             Log.d(TAG, "The value of cust is: "+ cust);
-                                            if(cust == 1)
-                                            {
+                                            if(cust == 1) {
                                                 startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
                                             }
-                                            else
-                                            {
+                                            else {
                                                 startActivity(new Intent(getApplicationContext(), CustomerLocation.class));
                                             }
-
                                         } else {
                                             Log.d(TAG, "No such document");
                                         }
@@ -210,7 +207,6 @@ public class Login extends AppCompatActivity {
                         else {
                             Toast.makeText(Login.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
     }
