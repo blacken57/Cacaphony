@@ -64,7 +64,7 @@ public class CustomerDashboard extends AppCompatActivity {
         Restaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RestaurantPage.class));
+                startActivity(new Intent(getApplicationContext(), RestaurantPage2.class));
             }
         });
     }

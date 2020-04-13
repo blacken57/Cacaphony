@@ -1,23 +1,17 @@
 package com.example.cacaphony;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
 
 //import com.google.api.Context;
-
-import com.google.firebase.firestore.DocumentReference;
-
-import java.util.List;
 
 public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
    private Context context;
