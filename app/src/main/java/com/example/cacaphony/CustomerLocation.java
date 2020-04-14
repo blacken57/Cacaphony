@@ -109,6 +109,7 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
             Log.d(TAG, "No Permission Folks!" );
+            Toast.makeText(this, "Permission Error", Toast.LENGTH_SHORT).show();
             requestLocationPermission();
         }
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) this);

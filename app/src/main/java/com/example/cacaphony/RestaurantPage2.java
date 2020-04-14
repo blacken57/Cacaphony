@@ -69,9 +69,11 @@ public class RestaurantPage2 extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),CustomerLocation.class));
+                startActivity(new Intent(getApplicationContext(),Menus.class));
             }
         });
+
+
 
     }
 }

@@ -1,7 +1,6 @@
 package com.example.cacaphony;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 //import com.google.api.Context;
 
@@ -38,6 +33,7 @@ public class Restaurant_Adapter extends  RecyclerView.Adapter<Restaurant_Adapter
     FirebaseFirestore fStore;
     FirebaseAuth mFAuth;
     String UserID,name,phone;
+
 
 
 
