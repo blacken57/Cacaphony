@@ -205,7 +205,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "User Singed in", Toast.LENGTH_SHORT).show();
                             getUserDetails(user, RC_SIGN_IN_D);
                             //starts delivery's activity
-                            startActivity(new Intent(Login.this, CustomerLocation.class));
+                            startActivity(new Intent(Login.this, DriverHomePage.class));
                         }
                         else {
                             Toast.makeText(Login.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();

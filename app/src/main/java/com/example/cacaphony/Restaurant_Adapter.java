@@ -86,6 +86,7 @@ public class Restaurant_Adapter extends  RecyclerView.Adapter<Restaurant_Adapter
                 user.put("UserID",UserID);
                 user.put("UserName",name);
                 user.put("UserPhone",phone);
+                user.put("Assigned",false);
                 documentReference.set(user);
                 Toast.makeText(v.getContext(), RestroList.get(position).getName() + " " + "Selected!", Toast.LENGTH_SHORT).show();
 

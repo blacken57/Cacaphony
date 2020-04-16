@@ -34,7 +34,13 @@ public class DriverHomePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.order:
+                    {
                         startActivity(new Intent(DriverHomePage.this, DriverOrders.class));
+                    }
+                    case R.id.settings:
+                    {
+                        startActivity(new Intent(DriverHomePage.this, EditDel.class));
+                    }
                 }
             mDrawerLayout.closeDrawer(GravityCompat.START);
             return true;
