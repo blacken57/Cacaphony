@@ -32,7 +32,7 @@ public class DriverOrders extends AppCompatActivity {
     private static final String TAG = "DDDDDDDDDDDD" ;
     RecyclerView recyclerView;
     OrderAdapter adapter;
-    List<Orders>  ordersList;
+    List<Orders>  ordersList,orderTemporary;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     double lat1,long1,lat2,long2, Radius;
@@ -41,6 +41,7 @@ public class DriverOrders extends AppCompatActivity {
     String Cust, DeliveryUser;
     Orders orders;
     int count = 0;
+    int count1 = 0;
 
     public static void wait(int ms){
         try
@@ -60,6 +61,7 @@ public class DriverOrders extends AppCompatActivity {
         Log.d(TAG,"The distance that comes out is this");
         fStore = FirebaseFirestore.getInstance();
         ordersList = new ArrayList<>();
+        orderTemporary = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -87,8 +89,10 @@ public class DriverOrders extends AppCompatActivity {
                         for (DocumentSnapshot documentSnapshot : task.getResult()) {
                             orders = new Orders(documentSnapshot.getString("UserID"),
                                     documentSnapshot.getString("Restaurant"), documentSnapshot.getString("UserName"),
-                                    documentSnapshot.getString("UserPhone")/*, documentSnapshot.getDouble("Amount")*//*,
+                                    documentSnapshot.getString("UserPhone"), documentSnapshot.getDouble("Price")/*,
                                     documentSnapshot.getBoolean("Assigned")*/);
+                            orderTemporary.add(orders);
+                            Log.d(TAG,"Order object name: "+orders.getuName());
                             String Rid = documentSnapshot.getString("RestroID");
                             DocumentReference documentReference = fStore.collection("Restaurants").document(Rid);
                             documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -102,6 +106,8 @@ public class DriverOrders extends AppCompatActivity {
                                             long1 = document.getDouble("Longitude");
                                             longitude.add(long1);
                                             Log.d(TAG,"But, the initial value is: "+lat1+" "+long1);
+                                            count++;
+
                                             final String restuuu = document.getString("Name");
                                             DocumentReference doc = fStore.collection("Customers").document(DeliveryUser);
                                             doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -113,20 +119,25 @@ public class DriverOrders extends AppCompatActivity {
 
                                                             String name = docu.getString("fName");
                                                             Location RestLoc = new Location("Rest");
-                                                            RestLoc.setLatitude(latitude.get(count));
-                                                            RestLoc.setLongitude(longitude.get(count));
+                                                            RestLoc.setLatitude(latitude.get(count1));
+                                                            RestLoc.setLongitude(longitude.get(count1));
                                                             Location CustLoc = new Location("Cust");
                                                             CustLoc.setLatitude(lat2);
                                                             CustLoc.setLongitude(long2);
 
+
                                                             if (CustLoc.distanceTo(RestLoc) / 1000 < Radius) {
-                                                                ordersList.add(orders);
-                                                                Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + name + " " + restuuu);
+                                                                ordersList.add(orderTemporary.get(count1));
+                                                                Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
                                                                 //Log.d(TAG,long1+" "+lat1);
-                                                                count++;
+
                                                             }
-                                                            adapter = new OrderAdapter(DriverOrders.this, ordersList);
-                                                            recyclerView.setAdapter(adapter);
+                                                            count1++;
+                                                            if(count1==count) {
+                                                                Log.d(TAG,"We are in the endgame");
+                                                                adapter = new OrderAdapter(DriverOrders.this, ordersList);
+                                                                recyclerView.setAdapter(adapter);
+                                                            }
                                                         }
                                                     }
                                                 }

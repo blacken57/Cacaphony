@@ -4,14 +4,14 @@ public class Orders {
     private String id;
     private String rest, uName, uPhone;
     private Boolean assigned;
-//    private double amount;
+   private double amount;
 
-    public Orders(String id, String rest, String uName, String uPhone/*, double amount*//*, Boolean assigned*/) {
+    public Orders(String id, String rest, String uName, String uPhone, double amount){//*, Boolean assigned*/) {
         this.id = id;
         this.rest = rest;
         this.uName = uName;
         this.uPhone = uPhone;
-       /* this.amount = amount;*/
+        this.amount = amount;
       /*  this.assigned = assigned;*/
     }
 
@@ -32,8 +32,8 @@ public class Orders {
     }
 
   /*  public String getAssigned(){return assigned.toString();}*/
-/*
+
     public double getAmount() {
         return amount;
-    }*/
+    }
 }

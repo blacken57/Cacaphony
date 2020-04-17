@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/passEdit"
         app:layout_constraintVertical_bias="0.422" />
 
     <Button
@@ -89,8 +89,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintTop_toBottomOf="@+id/passEdit"
+        app:layout_constraintVertical_bias="0.424"
+        tools:ignore="UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/textView254"
