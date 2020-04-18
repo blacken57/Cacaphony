@@ -60,7 +60,7 @@ public class Menus extends AppCompatActivity {
         if(MenuList.size()>0){
             MenuList.clear();
         }
-        String userId = mFAuth.getCurrentUser().getUid();
+        String userId = mFAuth.getUid();
         DocumentReference documentReference = fStore.collection("Orders").document(userId);
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

@@ -125,10 +125,12 @@ public class DriverOrders extends AppCompatActivity {
                                                             CustLoc.setLatitude(lat2);
                                                             CustLoc.setLongitude(long2);
 
+                                                            Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
+
 
                                                             if (CustLoc.distanceTo(RestLoc) / 1000 < Radius) {
                                                                 ordersList.add(orderTemporary.get(count1));
-                                                                Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
+                                                                //Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
                                                                 //Log.d(TAG,long1+" "+lat1);
 
                                                             }

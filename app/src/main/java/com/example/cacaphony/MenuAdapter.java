@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,6 +35,8 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
     FirebaseFirestore fStore;
     FirebaseAuth mFAuth;
     String UserID,name,phone;
+
+    //FirebaseUser User;
 
     public MenuAdapter(Context context, List<MenuObject> ordersList) {
         this.context = context;
