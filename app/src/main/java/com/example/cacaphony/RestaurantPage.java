@@ -35,7 +35,7 @@ public class RestaurantPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_page);
-        one = findViewById(R.id.card1);
+        //one = findViewById(R.id.card1);
         two = findViewById(R.id.card2);
         three = findViewById(R.id.card3);
         FirebaseAuth mFAuth;

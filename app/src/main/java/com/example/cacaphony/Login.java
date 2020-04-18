@@ -223,7 +223,6 @@ public class Login extends AppCompatActivity {
         users.put("fName", acct.getDisplayName() );
         users.put("email", acct.getEmail());
         users.put("password", "0");
-        users.put("Phone number", "0");
         users.put("Customer", i);
         documentReference.set(users,SetOptions.merge());
     }

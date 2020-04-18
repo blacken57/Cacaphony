@@ -18,12 +18,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class OrderTracking extends AppCompatActivity {
     private static final String TAG = "RRREEEEEEEEEEEEEE";
-    TextView Menu,Restaurant;
+    TextView Menu,Restaurant,jabla;
     TextView first,second,third,fourth;
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
     String Item, Restro;
     Double status;
+    String DelID;
+    String DeliveryName;
+    String Phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,12 @@ public class OrderTracking extends AppCompatActivity {
         setContentView(R.layout.activity_order_tracking);
         Menu = findViewById(R.id.MenuItem);
         Restaurant = findViewById(R.id.Resto);
+        jabla = findViewById(R.id.Info);
         first = findViewById(R.id.Confirmed);
         second = findViewById(R.id.Assign);
         third = findViewById(R.id.pickup);
         fourth = findViewById(R.id.delivered);
+
 
         mFAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -49,6 +54,8 @@ public class OrderTracking extends AppCompatActivity {
                         Restro = document.getString("Restaurant");
                         Item = document.getString("MenuItem");
                         status = document.getDouble("Status");
+                        DelID = document.getString("DeliveryId");
+
 
                         Restaurant.setText(Restro);
                         Menu.setText(Item);
@@ -85,6 +92,19 @@ public class OrderTracking extends AppCompatActivity {
                             fourth.setBackgroundColor(Color.parseColor("#00FF00"));
                             fourth.setText("Order Arrived(Complete)");
                         }
+                        DocumentReference documents = fStore.collection("Customers").document(DelID);
+                        documents.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                        DeliveryName = document.getString("fName");
+                                        Phone = document.getString("Phone number");
+                                        jabla.setText("Delivery Name is "+DeliveryName +"\n"+"Phone number: "+Phone);
+
+                                }
+                            }
+                        });
 
 
                     } else {

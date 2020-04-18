@@ -80,7 +80,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
         holder.priceOne.setText(arr[0]+" ");
         holder.priceTwo.setText(arr[1]+" ");
         holder.priceThree.setText(arr[2]+" ");
-        holder.priceFour.setText(arr[3]+" ");
+        holder.priceFour.setText(arr[2]+" ");
         holder.priceOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +124,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 Map<String,Object> user = new HashMap<>();
                 user.put("MenuItem",MenuList.get(position).getName());
                 int[] arr = MenuList.get(position).getPrice();
-                user.put("Price",arr[3]);
+                user.put("Price",arr[2]);
                 documentReference.set(user, SetOptions.merge());
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }

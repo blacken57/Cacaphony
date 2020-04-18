@@ -58,4 +58,8 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation files('.idea\\libraries\\activation.jar')
+    implementation files('.idea\\libraries\\additionnal.jar')
+    implementation files('.idea\\libraries\\javax.mail.jar')
+    implementation files('.idea\\libraries\\jsoup-1.13.1.jar')
 }

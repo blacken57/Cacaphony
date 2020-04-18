@@ -36,10 +36,17 @@ public class DriverHomePage extends AppCompatActivity {
                     case R.id.order:
                     {
                         startActivity(new Intent(DriverHomePage.this, DriverOrders.class));
+                        break;
                     }
                     case R.id.settings:
                     {
                         startActivity(new Intent(DriverHomePage.this, EditDel.class));
+                        break;
+                    }
+                    case R.id.dashboard:
+                    {
+                        startActivity(new Intent(DriverHomePage.this, PresentOrder.class));
+                        break;
                     }
                 }
             mDrawerLayout.closeDrawer(GravityCompat.START);
