@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PresentOrder"></activity>
+        <activity android:name=".MenusOc"></activity>
+        <activity android:name=".CustomerOptions" />
+        <activity android:name=".PresentOrder" />
         <activity android:name=".OrderTracking" />
         <activity android:name=".EditDel" />
         <activity android:name=".Menus" />

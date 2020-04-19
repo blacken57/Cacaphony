@@ -73,15 +73,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
         holder.textViewRest.setText(orders.getRest());
         holder.textViewuname.setText(orders.getuName());
         holder.textViewPhone.setText(orders.getuPhone());
-        /*holder.decline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference dec = driverOrders.fStore.collection("Orders")
-                        .document(ordersList.get(position).getAssigned());
-                dec.set(false);
-                Toast.makeText(driverOrders.getBaseContext(), "Order Declined", Toast.LENGTH_SHORT).show();
-            }
-        });*/
+
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
