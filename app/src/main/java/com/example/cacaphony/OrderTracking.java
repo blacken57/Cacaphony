@@ -54,7 +54,29 @@ public class OrderTracking extends AppCompatActivity {
                         Restro = document.getString("Restaurant");
                         Item = document.getString("MenuItem");
                         status = document.getDouble("Status");
-                        DelID = document.getString("DeliveryId");
+                        try
+                        {
+                            DelID = document.getString("DeliveryId");
+                            DocumentReference documents = fStore.collection("Customers").document(DelID);
+                            documents.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot document = task.getResult();
+                                        DeliveryName = document.getString("fName");
+                                        Phone = document.getString("Phone number");
+                                        jabla.setText("Delivery Name is "+DeliveryName +"\n"+"Phone number: "+Phone);
+
+                                    }
+                                }
+                            });
+                        }
+                        catch(Exception e )
+                        {
+                            DeliveryName = "No one yet.";
+                            Phone = "N/A";
+                            jabla.setText("No one has been Assigned yet.\nWait for some time.");
+                        }
 
 
                         Restaurant.setText(Restro);
@@ -92,19 +114,7 @@ public class OrderTracking extends AppCompatActivity {
                             fourth.setBackgroundColor(Color.parseColor("#00FF00"));
                             fourth.setText("Order Arrived(Complete)");
                         }
-                        DocumentReference documents = fStore.collection("Customers").document(DelID);
-                        documents.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    DocumentSnapshot document = task.getResult();
-                                        DeliveryName = document.getString("fName");
-                                        Phone = document.getString("Phone number");
-                                        jabla.setText("Delivery Name is "+DeliveryName +"\n"+"Phone number: "+Phone);
 
-                                }
-                            }
-                        });
 
 
                     } else {

@@ -23,7 +23,7 @@ public class CustomerDashboard extends AppCompatActivity {
     TextView mName;
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
-    String name;
+    String name,userId;
     Button Settings,Restaurant,Tracking;
 
     @Override
@@ -36,7 +36,7 @@ public class CustomerDashboard extends AppCompatActivity {
         mName = findViewById(R.id.name);
         mFAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        String userId = mFAuth.getCurrentUser().getUid();
+        userId = mFAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fStore.collection("Customers").document(userId);
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -65,7 +65,24 @@ public class CustomerDashboard extends AppCompatActivity {
         Restaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RestaurantPage2.class));
+                DocumentReference documentReference = fStore.collection("Orders").document(userId);
+                documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                return;
+                            } else {
+                                Log.d(TAG, "No such document");
+                                startActivity(new Intent(getApplicationContext(), RestaurantPage2.class));
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
+
             }
         });
 
