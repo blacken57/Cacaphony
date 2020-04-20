@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,6 +73,7 @@ public class CustomerDashboard extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
+                                Toast.makeText(CustomerDashboard.this,"You have already Ordered", Toast.LENGTH_SHORT).show();
                                 return;
                             } else {
                                 Log.d(TAG, "No such document");
