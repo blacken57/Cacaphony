@@ -2,6 +2,7 @@ package com.example.cacaphony;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
@@ -19,7 +20,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PointOfInterest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,6 +63,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         else {
             EasyPermissions.requestPermissions(this, "Please grant the location permission", REQUEST_LOCATION_PERMISSION, perms);
+        }
+    }
+
+    private void setPoiClick(final GoogleMap map) {
+        map.setOnPoiClickListener(new GoogleMap.OnPoiClickListener() {
+            @Override
+            public void onPoiClick(PointOfInterest poi) {
+                Marker poiMarker = mMap.addMarker(new MarkerOptions()
+                        .position(poi.latLng)
+                        .title(poi.name));
+                poiMarker.showInfoWindow();
+            }
+        });
+    }
+
+    private void enableMyLocation() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]
+                            {Manifest.permission.ACCESS_FINE_LOCATION},
+                    34);
         }
     }
 
@@ -111,6 +138,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /*LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+        enableMyLocation();
         fStore.collection("Orders").whereEqualTo("DeliveryId",DelID).whereEqualTo("Assigned",true).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -133,10 +161,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                             P1 = new LatLng(custLat,custLong);
                                             P2 = new LatLng(restLat,restLong);
                                             P3 = new LatLng(lati,longi);
-                                            mMap.addMarker(new MarkerOptions().position(P1).title(nameCust));
-                                            mMap.addMarker(new MarkerOptions().position(P2).title(RestroName));
+                                            //mMap.addMarker(new MarkerOptions().position(P1).title(nameCust));
+                                            Marker Custard = mMap.addMarker(new MarkerOptions()
+                                                    .position(P1)
+                                                    .title(nameCust));
+                                            Custard.showInfoWindow();
+                                            //mMap.addMarker(new MarkerOptions().position(P2).title(RestroName));
+                                            Marker Resting = mMap.addMarker(new MarkerOptions()
+                                                    .position(P2)
+                                                    .title(RestroName));
+                                            Resting.showInfoWindow();
                                             LatLng pos = new LatLng(lati,longi);
-                                            mMap.addMarker(new MarkerOptions().position(pos).title("You are here"));
+                                            //mMap.addMarker(new MarkerOptions().position(pos).title("You are here"));
+                                            /*Marker Usher = mMap.addMarker(new MarkerOptions()
+                                                    .position(pos)
+                                                    .title("This is you"));
+                                            Usher.showInfoWindow();*/
                                         } else {
                                             Log.d(TAG, "No such document");
                                         }

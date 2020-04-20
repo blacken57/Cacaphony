@@ -82,18 +82,13 @@ public class MenusOc extends AppCompatActivity {
                                             order = documentSnapshot.getData();
                                             for (Map.Entry mapElement : order.entrySet()) {
                                                 int[] arr = {23,34,5,7};
-
                                                 String key = (String)mapElement.getKey();
-
-                                                // Add some bonus marks
-                                                // to all the students and print it
                                                 Log.d(TAG,mapElement.getValue().getClass().getName()+"Is the target");
                                                 int[] arr1 = convertIntegers((List<Long>) mapElement.getValue());
                                                 MenuObjectOc restru = new MenuObjectOc(key,arr1);
                                                 MenuList.add(restru);
                                                 Log.d(TAG, "MenuListAdded");
                                             }
-
                                         }
                                         adapter = new MenuAdapterOc(MenusOc.this, MenuList);
                                         recyclerView.setAdapter(adapter);
