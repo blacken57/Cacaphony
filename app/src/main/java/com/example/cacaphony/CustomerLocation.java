@@ -127,7 +127,7 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                 user.put("Latitude",lati);
                 documentReference.set(user, SetOptions.merge());
 
-                startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                startActivity(new Intent(getApplicationContext(), CustomerHomePage.class));
 //                startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
             }
         });

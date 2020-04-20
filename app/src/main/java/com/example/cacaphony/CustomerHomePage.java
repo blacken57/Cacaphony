@@ -7,11 +7,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,10 +27,11 @@ public class CustomerHomePage extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     NavigationView mNavigationView;
-    TextView mName;  String name;
+    TextView mName,mInfo;  String name;
     private static final String TAG = "DASHBOARD ACTIVITY";
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
+    String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,55 @@ public class CustomerHomePage extends AppCompatActivity {
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
+        mFAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userId = mFAuth.getCurrentUser().getUid();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mNavigationView = findViewById(R.id.nav_view_cust);
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.rests: {
+                        Log.d(TAG, "Not working. rests");
+                        userId = mFAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = fStore.collection("Orders").document(userId);
+                        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        Toast.makeText(CustomerHomePage.this, "You have already Ordered", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    } else {
+                                        Log.d(TAG, "No such document");
+                                        startActivity(new Intent(getApplicationContext(), RestaurantPage2.class));
+                                    }
+                                } else {
+                                    Log.d(TAG, "get failed with ", task.getException());
+                                }
+                            }
+                        });
+
+
+                        break;
+                    }
+                    case R.id.settings: {
+                        startActivity(new Intent(CustomerHomePage.this, EditCust.class));
+                        break;
+                    }
+                    case R.id.custDashboard: {
+                        startActivity(new Intent(CustomerHomePage.this, OrderTracking.class));
+                        break;
+                    }
+                }
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
         /*mName = findViewById(R.id.customer_name);
         mFAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -59,32 +110,78 @@ public class CustomerHomePage extends AppCompatActivity {
                 }
             }
         });*/
-        mNavigationView = findViewById(R.id.nav_view_cust);
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+        mName = findViewById(R.id.fullName);
+        mInfo = findViewById(R.id.Infos);
+
+        DocumentReference documentReference = fStore.collection("Customers").document(userId);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.rests:
-                    {
-                        startActivity(new Intent(CustomerHomePage.this, RestaurantPage2.class));
-                        break;
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        name = document.getString("fName");
+                        String phone = document.getString("Phone number");
+                        String email = document.getString("email");
+                        mName.setText(name+"\n"+"Phone Number: "+phone+"\nEmail: "+email);
+                    } else {
+                        Log.d(TAG, "No such document");
                     }
-                    case R.id.settings:
-                    {
-                        startActivity(new Intent(CustomerHomePage.this, EditCust.class));
-                        break;
-                    }
-                    case R.id.custDashboard:
-                    {
-                        startActivity(new Intent(CustomerHomePage.this, OrderTracking.class));
-                        break;
-                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
                 }
-                mDrawerLayout.closeDrawer(GravityCompat.START);
-                return true;
             }
         });
 
+        DocumentReference documentReferences = fStore.collection("Orders").document(userId);
+        documentReferences.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String Del = document.getString("Restaurant");
+                        String menu = document.getString("MenuItem");
+                        double price = (double) document.get("Price");
+                        double status = document.getDouble("Status");
+                        if(status==4) {
+                            mInfo.setText("Previous Order Info: \n" +
+                                    "Restaurant: " + Del +
+                                    "\nItem Purchased: " + menu +
+                                    "\nPrice: " + price);
+                        }
+                        else
+                        {
+                            mInfo.setText("Present Order Info: \n" +
+                                    "Restaurant: " + Del +
+                                    "\nItem Purchased: " + menu +
+                                    "\nPrice: " + price);
+                        }
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+// Sync the toggle state after onRestoreInstanceState has occurred.
+        mToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -104,3 +201,4 @@ public class CustomerHomePage extends AppCompatActivity {
     }
 
 }
+

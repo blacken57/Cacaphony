@@ -1,6 +1,7 @@
 package com.example.cacaphony;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -13,6 +14,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,7 +38,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener{
 
     private static final String TAG = "8888888888888";
     private static final int REQUEST_LOCATION_PERMISSION = 1;
@@ -47,6 +51,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng P1,P2,P3;
     LocationManager locationManager;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.map_options, menu);
+        return true;
+    }
+    
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -91,6 +103,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Change the map type based on the user's selection.
+        switch (item.getItemId()) {
+            case R.id.normal_map:
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                return true;
+            case R.id.hybrid_map:
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                return true;
+            case R.id.satellite_map:
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                return true;
+            case R.id.terrain_map:
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                                     .title(RestroName));
                                             Resting.showInfoWindow();
                                             LatLng pos = new LatLng(lati,longi);
+                                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(P1,5));
                                             //mMap.addMarker(new MarkerOptions().position(pos).title("You are here"));
                                             /*Marker Usher = mMap.addMarker(new MarkerOptions()
                                                     .position(pos)

@@ -8,15 +8,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class DriverHomePage extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     NavigationView mNavigationView;
+    TextView texty,per;
+    FirebaseFirestore fStore;
+    FirebaseAuth fAUth;
+    String DelId, Restaurant, Menu, Customer, Name, Phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +40,11 @@ public class DriverHomePage extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        fAUth = FirebaseAuth.getInstance();
+        DelId = fAUth.getUid();
+        fStore = FirebaseFirestore.getInstance();
+        texty = findViewById(R.id.Information);
+        per = findViewById(R.id.Personal);
 
         mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -51,6 +69,46 @@ public class DriverHomePage extends AppCompatActivity {
                 }
             mDrawerLayout.closeDrawer(GravityCompat.START);
             return true;
+            }
+        });
+
+        try{
+        fStore.collection("Orders").whereEqualTo("DeliveryId",DelId).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                            Restaurant = documentSnapshot.getString("Restaurant");
+                            Menu = documentSnapshot.getString("MenuItem");
+                            Customer = documentSnapshot.getString("UserName");
+                            double stat = documentSnapshot.getDouble("Status");
+                            if(stat<4) {
+                                texty.setText("Your present order:\nRestaurant: " + Restaurant + " Menu Item: " + Menu + "\nfor " + Customer);
+                            }
+                            else{texty.setText("Your previous order:\nRestaurant: " + Restaurant + " Menu Item: " + Menu + "\nfor " + Customer);
+                            }
+                        }
+                    }
+                });
+
+    }
+        catch(Exception e){
+            texty.setText("No Orders Yet");
+        }
+
+        DocumentReference documentReference = fStore.collection("Customers").document(DelId);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Name = document.getString("fName");
+                        String phone = document.getString("Phone number");
+                        String email = document.getString("email");
+                        per.setText(Name+"\n"+"Phone Number: "+phone+"\nEmail: "+email);
+                    }
+                }
             }
         });
 
