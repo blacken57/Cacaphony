@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenusOc"></activity>
+        <activity android:name=".CustomerHomePage"></activity>
+        <activity android:name=".MenusOc" />
         <activity android:name=".CustomerOptions" />
         <activity android:name=".PresentOrder" />
         <activity android:name=".OrderTracking" />
@@ -25,7 +26,6 @@
         <activity android:name=".Menus" />
         <activity android:name=".RestaurantPage2" />
         <activity android:name=".RestaurantPage" />
-        <activity android:name=".CustomerDashboard" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

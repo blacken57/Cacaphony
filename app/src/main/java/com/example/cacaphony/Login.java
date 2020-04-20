@@ -111,7 +111,7 @@ public class Login extends AppCompatActivity {
                                             Log.d(TAG, "The value of cust is: "+ cust);
                                             if(cust == 1)
                                             {
-                                                startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                                                startActivity(new Intent(getApplicationContext(), CustomerHomePage.class));
                                             }
                                             else
                                             {
@@ -186,7 +186,7 @@ public class Login extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(Login.this, "User Singed in", Toast.LENGTH_SHORT).show();
                             getUserDetails(user, RC_SIGN_IN_C);
-                            startActivity(new Intent(Login.this, CustomerDashboard.class));
+                            startActivity(new Intent(Login.this, CustomerHomePage.class));
                         }
                         else {
                             Toast.makeText(Login.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();

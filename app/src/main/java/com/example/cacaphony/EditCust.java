@@ -112,7 +112,7 @@ public class EditCust extends AppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                startActivity(new Intent(getApplicationContext(), CustomerHomePage.class));
             }
         });
     }

@@ -15,25 +15,46 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" >
+        app:layout_constraintVertical_bias="0.216">
 
         <fragment
             android:id="@+id/autocomplete_fragment"
             android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="53dp" />
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/loc"
-        android:layout_width="121dp"
-        android:layout_height="88dp"
-        android:background="@drawable/unnamed"
+        android:layout_width="107dp"
+        android:layout_height="68dp"
+        android:background="@drawable/location_round_button"
         android:text="Current Location"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.492" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Search you location"
+        android:textSize="23dp"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Get your current Location"
+        android:textSize="23dp"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="331dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

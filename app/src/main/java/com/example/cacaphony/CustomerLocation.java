@@ -132,9 +132,9 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerHomePage.class));
                              }
-                        else{startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));}
+                        else{startActivity(new Intent(getApplicationContext(), CustomerHomePage.class));}
                     }
                 });
 //                startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
