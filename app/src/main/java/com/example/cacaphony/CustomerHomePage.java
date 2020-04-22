@@ -60,7 +60,7 @@ public class CustomerHomePage extends AppCompatActivity {
                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                 if (task.isSuccessful()) {
                                     DocumentSnapshot document = task.getResult();
-                                    if (document.exists()) {
+                                    if (document.exists()&&document.get("Longitude")!=null) {
                                         Toast.makeText(CustomerHomePage.this, "You have already Ordered", Toast.LENGTH_SHORT).show();
                                         return;
                                     } else {
@@ -141,22 +141,27 @@ public class CustomerHomePage extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+                        try {
                         String Del = document.getString("Restaurant");
                         String menu = document.getString("MenuItem");
-                        double price = (double) document.get("Price");
+                        double price = document.getDouble("Price");
                         double status = document.getDouble("Status");
-                        if(status==4) {
+                        if (status == 4) {
                             mInfo.setText("Previous Order Info: \n" +
                                     "Restaurant: " + Del +
                                     "\nItem Purchased: " + menu +
                                     "\nPrice: " + price);
-                        }
-                        else
-                        {
+                        } else {
                             mInfo.setText("Present Order Info: \n" +
                                     "Restaurant: " + Del +
                                     "\nItem Purchased: " + menu +
                                     "\nPrice: " + price);
+                        }
+                    }
+                        catch(Exception e)
+                        {
+                            Log.d(TAG,e.toString());
+                            mInfo.setText("Order Not Complete");
                         }
                     } else {
                         Log.d(TAG, "No such document");

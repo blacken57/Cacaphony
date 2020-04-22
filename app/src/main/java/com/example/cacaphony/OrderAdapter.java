@@ -2,6 +2,7 @@ package com.example.cacaphony;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.BreakIterator;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -73,6 +74,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
         holder.textViewRest.setText(orders.getRest());
         holder.textViewuname.setText(orders.getuName());
         holder.textViewPhone.setText(orders.getuPhone());
+        holder.textViewPrice.setText(orders.getAmount()+" ");
 
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +148,8 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
     }
 
     class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewRest, textViewuname, textViewPhone/*, textViewPrice*/;
+
+        TextView textViewRest, textViewuname, textViewPhone, textViewPrice;
         Button decline, accept;
 
 
@@ -155,6 +158,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
             textViewRest = itemView.findViewById(R.id.textViewRest);
             textViewuname = itemView.findViewById(R.id.textViewuname);
             textViewPhone = itemView.findViewById(R.id.textViewPhone);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
 //            decline = itemView.findViewById(R.id.decline);
             accept = itemView.findViewById(R.id.Accept);
 /*            textViewPrice = itemView.findViewById(R.id.textViewPrice);*/

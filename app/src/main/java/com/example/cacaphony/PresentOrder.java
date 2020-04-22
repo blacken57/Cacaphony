@@ -34,6 +34,7 @@ public class PresentOrder extends AppCompatActivity {
     String otp,name,phone,menuItem,Restaurant,DelID,CustID,OrderID;
     FirebaseFirestore fStore;
     FirebaseAuth fAUth;
+    double price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class PresentOrder extends AppCompatActivity {
                             menuItem = documentSnapshot.getString("MenuItem");
                             Restaurant = documentSnapshot.getString("Restaurant");
                             OrderID = documentSnapshot.getId();
+                            price = documentSnapshot.getDouble("Price");
                             DocumentReference documentReference = fStore.collection("Customers").document(CustID);
                             documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
@@ -70,7 +72,7 @@ public class PresentOrder extends AppCompatActivity {
                                         if (document.exists()) {
                                             name = document.getString("fName");
                                             phone = document.getString("Phone number");
-                                            Info.setText("Customer Name: "+name+"\n"+"Phone number: "+phone+"\n"+"Restaurant: "+Restaurant+"\n"+"Item: "+menuItem);
+                                            Info.setText("Customer Name: "+name+"\n"+"Phone number: "+phone+"\n"+"Restaurant: "+Restaurant+"\n"+"Item: "+menuItem+", Price: "+price);
 
                                         } else {
                                             Log.d(TAG, "No such document");

@@ -87,12 +87,15 @@ public class DriverOrders extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                            try{
+                                double ok = documentSnapshot.getDouble("Longitude");
+                                Log.d(TAG,ok+"");
                             orders = new Orders(documentSnapshot.getString("UserID"),
                                     documentSnapshot.getString("Restaurant"), documentSnapshot.getString("UserName"),
                                     documentSnapshot.getString("UserPhone"), documentSnapshot.getDouble("Price")/*,
                                     documentSnapshot.getBoolean("Assigned")*/);
                             orderTemporary.add(orders);
-                            Log.d(TAG,"Order object name: "+orders.getuName());
+                            Log.d(TAG, "Order object name: " + orders.getuName());
                             String Rid = documentSnapshot.getString("RestroID");
                             DocumentReference documentReference = fStore.collection("Restaurants").document(Rid);
                             documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -105,7 +108,7 @@ public class DriverOrders extends AppCompatActivity {
                                             latitude.add(lat1);
                                             long1 = document.getDouble("Longitude");
                                             longitude.add(long1);
-                                            Log.d(TAG,"But, the initial value is: "+lat1+" "+long1);
+                                            Log.d(TAG, "But, the initial value is: " + lat1 + " " + long1);
                                             count++;
 
                                             final String restuuu = document.getString("Name");
@@ -135,8 +138,8 @@ public class DriverOrders extends AppCompatActivity {
 
                                                             }
                                                             count1++;
-                                                            if(count1==count) {
-                                                                Log.d(TAG,"We are in the endgame");
+                                                            if (count1 == count) {
+                                                                Log.d(TAG, "We are in the endgame");
                                                                 adapter = new OrderAdapter(DriverOrders.this, ordersList);
                                                                 recyclerView.setAdapter(adapter);
                                                             }
@@ -158,6 +161,11 @@ public class DriverOrders extends AppCompatActivity {
                             }*/
 
                         }
+                            catch(Exception e){
+                                Log.d(TAG,e.toString());
+                            }
+                        }
+
 
                     }
                 })

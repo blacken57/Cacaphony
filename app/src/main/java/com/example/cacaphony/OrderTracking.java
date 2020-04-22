@@ -75,7 +75,7 @@ public class OrderTracking extends AppCompatActivity {
                         {
                             DeliveryName = "No one yet.";
                             Phone = "N/A";
-                            jabla.setText("No one has been Assigned yet.\nWait for some time.");
+                            jabla.setText("No one has been Assigned to deliver yet.\nWait for some time.");
                         }
 
 
@@ -106,7 +106,7 @@ public class OrderTracking extends AppCompatActivity {
                         if(status==4)
                         {
                             first.setBackgroundColor(Color.parseColor("#00FF00"));
-                            first.setText("Order Confirmed(Done)");
+                            first.setText("Order Placed(Done)");
                             second.setBackgroundColor(Color.parseColor("#00FF00"));
                             second.setText("Delivery guy Assigned");
                             third.setBackgroundColor(Color.parseColor("#00FF00"));
@@ -119,6 +119,7 @@ public class OrderTracking extends AppCompatActivity {
 
                     } else {
                         Log.d(TAG, "No such document");
+                        jabla.setText("You have not ordered yet.\nPlace your first Order through Restaurants!");
                     }
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
