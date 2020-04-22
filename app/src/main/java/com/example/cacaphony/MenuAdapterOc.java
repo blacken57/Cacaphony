@@ -19,6 +19,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,8 +83,25 @@ public class MenuAdapterOc extends  RecyclerView.Adapter<MenuAdapterOc.MenuViewH
                 Map<String,Object> user = new HashMap<>();
                 user.put("MenuItem",MenuList.get(position).getName());
                 int[] arr = MenuList.get(position).getPrice();
+
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int min = calendar.get(Calendar.MINUTE);
+                String[] days = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+                String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
+                int date = calendar.get(Calendar.DAY_OF_MONTH);
+                if(min<=9){
+                String time = hour + ":0" + min + ", " + day + ", " + date + ".";
+                    user.put("Time", time);}
+                else{
+                    String time = hour + ":" + min + ", " + day + ", " + date + ".";
+                    user.put("Time", time);
+                }
+
                 user.put("Price",arr[0]);
                 documentReference.set(user, SetOptions.merge());
+
+
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });

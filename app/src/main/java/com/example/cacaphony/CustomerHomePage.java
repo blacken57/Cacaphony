@@ -60,7 +60,7 @@ public class CustomerHomePage extends AppCompatActivity {
                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                 if (task.isSuccessful()) {
                                     DocumentSnapshot document = task.getResult();
-                                    if (document.exists()&&document.get("Longitude")!=null) {
+                                    if (document.exists()&&document.get("Longitude")!=null && document.getDouble("Status") !=4) {
                                         Toast.makeText(CustomerHomePage.this, "You have already Ordered", Toast.LENGTH_SHORT).show();
                                         return;
                                     } else {
@@ -146,6 +146,7 @@ public class CustomerHomePage extends AppCompatActivity {
                         String menu = document.getString("MenuItem");
                         double price = document.getDouble("Price");
                         double status = document.getDouble("Status");
+                        String time = document.getString("Time");
                         if (status == 4) {
                             mInfo.setText("Previous Order Info: \n" +
                                     "Restaurant: " + Del +

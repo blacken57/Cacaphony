@@ -17,7 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 //import com.google.api.Context;
 
@@ -37,15 +41,17 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
     private List<Orders> ordersList ;
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
-    String Email;
+    String Email, phoneNumber;
     String OTP;
     Orders od;
+    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack;
     //Button accept;
 
     public OrderAdapter(Context context, List<Orders> ordersList) {
         this.context = context;
         this.ordersList = ordersList;
     }
+
 
     public static int generateRandomDigits() {
         int m = (int) Math.pow(10, 3);
@@ -76,9 +82,11 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
         holder.textViewPhone.setText(orders.getuPhone());
         holder.textViewPrice.setText(orders.getAmount()+" ");
 
+
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mFAuth = FirebaseAuth.getInstance();
                 fStore = FirebaseFirestore.getInstance();
                 final String userId = mFAuth.getUid();
@@ -104,10 +112,11 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                                             DocumentSnapshot User = task.getResult();
                                             if(User.exists()){
                                                 Email = User.getString("email");
+                                                phoneNumber = User.getString("UserPhone");
                                                 OTP = String.valueOf(generateRandomDigits());
 
                                                 try{
-
+                                                    SendingSMS.sendSms(OTP, phoneNumber);
                                                     enableStrictMode();
                                                     Mailer.send("obliviousalwaysforever@gmail.com","wha1sup??",Email,"Order OTP",OTP+" Is yout OTP. Do you understand?");
 

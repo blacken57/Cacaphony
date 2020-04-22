@@ -26,11 +26,13 @@
 
     <Button
         android:id="@+id/loc"
-        android:layout_width="107dp"
-        android:layout_height="68dp"
+        android:layout_width="123dp"
+        android:layout_height="57dp"
         android:background="@drawable/location_round_button"
+        android:fontFamily="sans-serif"
         android:text="Current Location"
-
+        android:textAllCaps="false"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +53,10 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif"
         android:text="Get your current Location"
         android:textSize="23dp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="72dp"
         tools:layout_editor_absoluteY="331dp" />
 
