@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,6 +31,8 @@ public class DriverHomePage extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth fAUth;
     String DelId, Restaurant, Menu, Customer, Name, Phone;
+    int check = 0;
+    double lat2, long2, Radius;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class DriverHomePage extends AppCompatActivity {
         texty = findViewById(R.id.Information);
         per = findViewById(R.id.Personal);
 
+
         mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -53,7 +57,24 @@ public class DriverHomePage extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.order:
                     {
-                        startActivity(new Intent(DriverHomePage.this, DriverOrders.class));
+                        DocumentReference doc = fStore.collection("Customers").document(DelId);
+                        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                DocumentSnapshot f = task.getResult();
+                                try {
+                                    lat2 = f.getDouble("Latitude");
+                                    long2 = f.getDouble("Longitude");
+                                    Radius = f.getDouble("Radius");
+                                    Log.d("HELLOOOO", "But, the secondary value is: " + lat2 + " " + long2);
+                                    startActivity(new Intent(DriverHomePage.this, DriverOrders.class));
+                                }catch(Exception e)
+                                {
+                                    Toast.makeText(DriverHomePage.this, "Update your Radius and Location", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
                         break;
                     }
                     case R.id.settings:

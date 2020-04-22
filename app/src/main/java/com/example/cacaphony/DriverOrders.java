@@ -42,6 +42,7 @@ public class DriverOrders extends AppCompatActivity {
     Orders orders;
     int count = 0;
     int count1 = 0;
+    int check =0;
 
     public static void wait(int ms){
         try
@@ -76,10 +77,12 @@ public class DriverOrders extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot f = task.getResult();
-                lat2 = f.getDouble("Latitude");
-                long2 = f.getDouble("Longitude");
-                Radius = f.getDouble("Radius");
-                Log.d(TAG,"But, the secondary value is: "+lat2+" "+long2);
+
+                    lat2 = f.getDouble("Latitude");
+                    long2 = f.getDouble("Longitude");
+                    Radius = f.getDouble("Radius");
+                    Log.d(TAG, "But, the secondary value is: " + lat2 + " " + long2);
+
             }
         });
         fStore.collection("Orders").whereEqualTo("Assigned",false).get()
