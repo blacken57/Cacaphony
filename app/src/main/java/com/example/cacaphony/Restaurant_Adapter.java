@@ -1,6 +1,7 @@
 package com.example.cacaphony;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ public class Restaurant_Adapter extends  RecyclerView.Adapter<Restaurant_Adapter
     FirebaseFirestore fStore;
     FirebaseAuth mFAuth;
     String UserID,name,phone;
+    double opening,closing;
 
 
 
@@ -75,24 +78,41 @@ public class Restaurant_Adapter extends  RecyclerView.Adapter<Restaurant_Adapter
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, final int position) {
         Restros restros = RestroList.get(position);
-        holder.textViewRest.setText(restros.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference documentReference = fStore.collection("Orders").document(UserID);
-                Map<String,Object> user = new HashMap<>();
-                user.put("RestroID", RestroList.get(position).getID());
-                user.put("Restaurant",RestroList.get(position).getName());
-                user.put("UserID",UserID);
-                user.put("UserName",name);
-                user.put("UserPhone",phone);
-                user.put("Assigned",false);
-                user.put("Status",1);
-                documentReference.set(user);
-                Toast.makeText(v.getContext(), RestroList.get(position).getName() + " " + "Selected!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        double closing = restros.getclosing();
+        double opening = restros.getopening();
+        Calendar toby = Calendar.getInstance();
+        double time = toby.get(Calendar.HOUR_OF_DAY);
+        if(time<closing&&time>opening) {
+            holder.textViewRest.setBackgroundColor(Color.parseColor("#00FA9A"));
+            holder.textViewRest.setText(restros.getName()+"\nopens: "+(int)restros.getopening()+":00, closes: "+(int)restros.getclosing()+":00");
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DocumentReference documentReference = fStore.collection("Orders").document(UserID);
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("RestroID", RestroList.get(position).getID());
+                    user.put("Restaurant", RestroList.get(position).getName());
+                    user.put("UserID", UserID);
+                    user.put("UserName", name);
+                    user.put("UserPhone", phone);
+                    user.put("Assigned", false);
+                    user.put("Status", 1);
+                    documentReference.set(user);
+                    Toast.makeText(v.getContext(), RestroList.get(position).getName() + " " + "Selected!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else
+        {
+            holder.textViewRest.setText(restros.getName()+" is closed"+"\nopens: "+(int)restros.getopening()+":00, closes: "+(int)restros.getclosing()+":00");
+            holder.textViewRest.setBackgroundColor(Color.parseColor("#800000"));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), RestroList.get(position).getName() + " " + " is closed. Try another", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override

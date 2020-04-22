@@ -21,6 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class RestaurantPage2 extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class RestaurantPage2 extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     Button bt;
+    double a;
 
 
     @Override
@@ -51,8 +54,13 @@ public class RestaurantPage2 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for(DocumentSnapshot documentSnapshot : task.getResult()){
-                            Restros restru = new Restros(documentSnapshot.getString("Name"),documentSnapshot.getId());
+                            Restros restru = new Restros(documentSnapshot.getString("Name"),documentSnapshot.getId(),documentSnapshot.getDouble("opening"),documentSnapshot.getDouble("closing"));
                             RestroList.add(restru);
+
+                            Calendar toby = Calendar.getInstance();
+                            //toby.set(Calendar.HOUR_OF_DAY, new Date().getHours());
+                            Log.d("88888888","Current hour: "+ toby.get(Calendar.HOUR_OF_DAY));
+                            a=System.currentTimeMillis();
                         }
                         adapter = new Restaurant_Adapter(RestaurantPage2.this, RestroList);
                         recyclerView.setAdapter(adapter);
