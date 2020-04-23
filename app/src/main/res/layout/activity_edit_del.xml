@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/photo2"
+    android:background="@drawable/photo3"
     tools:context=".EditDel">
 
     <TextView
@@ -22,139 +22,142 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:alpha="0.6"
-        android:background="@drawable/text_view_round"
+        android:layout_width="313dp"
+        android:layout_height="38dp"
+        android:alpha="0.55"
+        android:background="@drawable/rb_text_view_2"
         android:ems="10"
         android:hint="  Name"
         android:inputType="textPersonName"
+        android:textColorHint="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
+        app:layout_constraintVertical_bias="0.217" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="313dp"
+        android:layout_height="38dp"
+        android:alpha="0.55"
+        android:background="@drawable/rb_text_view_2"
+        android:ems="10"
+        android:hint="   Phone number"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/Black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.584" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="313dp"
+        android:layout_height="38dp"
+        android:alpha="0.55"
+        android:background="@drawable/rb_text_view_2"
+        android:ems="10"
+        android:hint="  Password"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/Black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403" />
+
+    <EditText
+        android:id="@+id/radius"
+        android:layout_width="222dp"
+        android:layout_height="38dp"
+        android:alpha="0.55"
+        android:background="@drawable/rb_text_view_2"
+        android:ems="10"
+        android:hint="   Radius"
+        android:inputType="number"
+        android:textColorHint="@color/Black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
     <Button
         android:id="@+id/setName"
         android:layout_width="148dp"
-        android:layout_height="43dp"
+        android:layout_height="35dp"
         android:background="@drawable/deetsbutton"
+        android:text="Save Username"
         android:textAllCaps="false"
         android:textSize="16dp"
-        android:text="Save Username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.387" />
-
-    <EditText
-        android:id="@+id/pass"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:alpha="0.6"
-        android:background="@drawable/text_view_round"
-        android:ems="10"
-        android:hint="  Password"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.301" />
 
     <Button
         android:id="@+id/setPass"
         android:layout_width="148dp"
-        android:layout_height="43dp"
+        android:layout_height="35dp"
         android:background="@drawable/deetsbutton"
+        android:text="Save Password"
         android:textAllCaps="false"
         android:textSize="16dp"
-        android:text="Save Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:alpha="0.6"
-        android:background="@drawable/text_view_round"
-        android:ems="10"
-        android:hint="   Phone number"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.709" />
+        app:layout_constraintVertical_bias="0.485" />
 
     <Button
         android:id="@+id/setPhone"
         android:layout_width="148dp"
-        android:layout_height="43dp"
+        android:layout_height="35dp"
         android:background="@drawable/deetsbutton"
+        android:text="Save Number"
         android:textAllCaps="false"
         android:textSize="16dp"
-        android:text="Save Number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
-
-    <EditText
-        android:id="@+id/radius"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        android:alpha="0.6"
-        android:background="@drawable/text_view_round"
-        android:ems="10"
-        android:hint="   Radius"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
+        app:layout_constraintVertical_bias="0.67" />
 
     <Button
         android:id="@+id/setRadius"
         android:layout_width="100dp"
-        android:layout_height="43dp"
+        android:layout_height="35dp"
         android:background="@drawable/deetsbutton"
         android:text="Set radius"
         android:textAllCaps="false"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
+        app:layout_constraintVertical_bias="0.839" />
 
     <Button
         android:id="@+id/setLoc"
-        android:layout_width="130dp"
-        android:layout_height="43dp"
+        android:layout_width="148dp"
+        android:layout_height="35dp"
         android:background="@drawable/deetsbutton"
         android:text="Set Location"
         android:textAllCaps="false"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
+        app:layout_constraintVertical_bias="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
