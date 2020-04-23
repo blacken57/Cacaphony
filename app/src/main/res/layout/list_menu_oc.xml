@@ -7,37 +7,37 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="398dp"
-        android:layout_height="47dp"
+        android:layout_width="437dp"
+        android:layout_height="54dp"
         android:alpha="0.67"
         app:cardBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04">
+        app:layout_constraintVertical_bias="0.058">
 
         <RelativeLayout
-            android:layout_width="396dp"
-            android:layout_height="50dp">
+            android:layout_width="wrap_content"
+            android:layout_height="54dp">
 
             <TextView
                 android:id="@+id/item12"
-                android:layout_width="227dp"
-                android:layout_height="29dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="119dp"
-                android:layout_marginRight="119dp"
-                android:layout_marginBottom="11dp"
+                android:layout_marginStart="93dp"
+                android:layout_marginLeft="93dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="109dp"
+                android:layout_marginRight="109dp"
+                android:layout_marginBottom="17dp"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/Black"
@@ -45,20 +45,20 @@
 
             <TextView
                 android:id="@+id/price1"
-                android:layout_width="50dp"
-                android:layout_height="31dp"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="321dp"
-                android:layout_marginLeft="321dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="9dp"
+                android:layout_marginStart="346dp"
+                android:layout_marginLeft="346dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginBottom="10dp"
                 android:background="#9EFBA2" />
 
 

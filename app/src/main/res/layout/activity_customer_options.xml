@@ -16,46 +16,47 @@
         android:text="Are you a"
         android:textAlignment="center"
         android:textColor="@color/Black"
-        android:textSize="36sp"
-        android:textStyle="bold"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.345" />
+        app:layout_constraintVertical_bias="0.421" />
 
     <TextView
         android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
+        android:layout_width="125dp"
+        android:layout_height="23dp"
         android:gravity="center_horizontal"
         android:text="Or"
         android:textAlignment="center"
         android:textColor="@color/Black"
-        android:textSize="36sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
+        app:layout_constraintVertical_bias="0.532" />
 
     <Button
         android:id="@+id/oks"
         android:layout_width="145dp"
-        android:layout_height="56dp"
-
+        android:layout_height="52dp"
         android:layout_marginBottom="120dp"
+        android:alpha="0.8"
         android:background="@drawable/rb_text_view_2"
+        android:gravity="center"
         android:text="Occasional"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
+        app:layout_constraintVertical_bias="0.682" />
 
     <TextView
         android:id="@+id/text3"
@@ -65,29 +66,28 @@
         android:text="Customer?"
         android:textAlignment="center"
         android:textColor="@color/Black"
-        android:textSize="36sp"
-        android:textStyle="bold"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.709" />
+        app:layout_constraintVertical_bias="0.696" />
 
     <Button
         android:id="@+id/regs"
         android:layout_width="150dp"
-        android:layout_height="56dp"
-        android:textColor="@color/white"
+        android:layout_height="52dp"
+        android:alpha="0.8"
         android:background="@drawable/rb_text_view_2"
         android:text="Regular"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53" />
+        app:layout_constraintVertical_bias="0.535" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

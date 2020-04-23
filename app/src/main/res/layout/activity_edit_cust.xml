@@ -10,17 +10,21 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="196dp"
-        android:layout_height="53dp"
-        android:fontFamily="sans-serif-smallcaps"
+        android:layout_width="263dp"
+        android:layout_height="65dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
         android:text="Edit Profile"
+        android:textColor="@color/Black"
         android:textColorLink="#FFFFFF"
-        android:textSize="35sp"
+        android:textSize="38sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <EditText
         android:id="@+id/fullNameEdit"
@@ -37,8 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.271" />
 
     <EditText
         android:id="@+id/phoneEdit"

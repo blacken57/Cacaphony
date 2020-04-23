@@ -11,36 +11,41 @@
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/photo5"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-3dp" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="299dp"
-        android:layout_height="116dp"
+        android:layout_width="244dp"
+        android:layout_height="89dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:fontFamily="casual"
+        android:background="#BF9696"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:includeFontPadding="true"
         android:text="eatrepeat"
         android:textColorLink="@color/design_default_color_on_secondary"
-        android:textSize="60sp"
+        android:textSize="60dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <EditText
         android:id="@+id/Email2"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="41dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -64,7 +69,7 @@
     <EditText
         android:id="@+id/pass2"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="41dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -86,8 +91,8 @@
 
     <Button
         android:id="@+id/registering2"
-        android:layout_width="128dp"
-        android:layout_height="44dp"
+        android:layout_width="104dp"
+        android:layout_height="39dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -95,14 +100,18 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="184dp"
+        android:alpha="0.9"
         android:background="@drawable/round_button"
         android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/PrimaryDark"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.994" />
 
     <TextView
         android:id="@+id/Reg"
@@ -110,7 +119,7 @@
         android:layout_height="32dp"
         android:fontFamily="sans-serif-thin"
         android:text="New User? Sign In"
-        android:textColor="@color/design_default_color_on_secondary"
+        android:textColor="@color/quantum_bluegrey800"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,7 +127,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="0.775" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/signInButtonCust"
@@ -126,10 +135,10 @@
         android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882">
+        app:layout_constraintVertical_bias="0.847">
 
     </com.google.android.gms.common.SignInButton>
 
@@ -139,15 +148,15 @@
         android:layout_height="25dp"
         android:fontFamily="sans-serif-thin"
         android:text="Sign in as Customer?"
-        android:textColor="@color/design_default_color_on_secondary"
+        android:textColor="@color/quantum_black_secondary_text"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInButtonCust"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/signInButtonDel"
@@ -155,10 +164,10 @@
         android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.688"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
+        app:layout_constraintVertical_bias="0.849" />
 
     <TextView
         android:id="@+id/asDel"
@@ -166,11 +175,11 @@
         android:layout_height="23dp"
 
         android:text="Sign in as Delivery?"
-        android:textColor="@color/design_default_color_on_secondary"
+        android:textColor="@color/quantum_black_secondary_text"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInButtonDel"
         app:layout_constraintVertical_bias="0.0" />

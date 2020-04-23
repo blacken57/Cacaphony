@@ -84,34 +84,34 @@ public class OrderTracking extends AppCompatActivity {
 
                         if(status==1)
                         {
-                            first.setBackgroundColor(Color.parseColor("#00FF00"));
+                            first.setBackgroundColor(Color.parseColor("#72E567"));
                             first.setText("Order Confirmed(Done)");
                         }
                         if(status==2)
                         {
-                            first.setBackgroundColor(Color.parseColor("#00FF00"));
+                            first.setBackgroundColor(Color.parseColor("#72E567"));
                             first.setText("Order Confirmed(Done)");
-                            second.setBackgroundColor(Color.parseColor("#00FF00"));
+                            second.setBackgroundColor(Color.parseColor("#72E567"));
                             second.setText("Delivery guy Assigned");
                         }
                         if(status==3)
                         {
-                            first.setBackgroundColor(Color.parseColor("#00FF00"));
+                            first.setBackgroundColor(Color.parseColor("#72E567"));
                             first.setText("Order Confirmed(Done)");
-                            second.setBackgroundColor(Color.parseColor("#00FF00"));
+                            second.setBackgroundColor(Color.parseColor("#72E567"));
                             second.setText("Delivery guy Assigned");
-                            third.setBackgroundColor(Color.parseColor("#00FF00"));
+                            third.setBackgroundColor(Color.parseColor("#72E567"));
                             third.setText("Order picked up(Done)");
                         }
                         if(status==4)
                         {
-                            first.setBackgroundColor(Color.parseColor("#00FF00"));
+                            first.setBackgroundColor(Color.parseColor("#72E567"));
                             first.setText("Order Placed(Done)");
-                            second.setBackgroundColor(Color.parseColor("#00FF00"));
+                            second.setBackgroundColor(Color.parseColor("#72E567"));
                             second.setText("Delivery guy Assigned");
-                            third.setBackgroundColor(Color.parseColor("#00FF00"));
+                            third.setBackgroundColor(Color.parseColor("#72E567"));
                             third.setText("Order picked up(Done)");
-                            fourth.setBackgroundColor(Color.parseColor("#00FF00"));
+                            fourth.setBackgroundColor(Color.parseColor("#72E567"));
                             fourth.setText("Order Arrived(Complete)");
                         }
 

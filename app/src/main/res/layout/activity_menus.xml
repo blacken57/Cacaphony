@@ -9,8 +9,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
-        android:layout_width="407dp"
-        android:layout_height="490dp"
+        android:layout_width="414dp"
+        android:layout_height="536dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +19,17 @@
 
     <Button
         android:id="@+id/order"
-        android:layout_width="151dp"
-        android:layout_height="56dp"
-        android:background="#E66E7C"
+        android:layout_width="122dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rb_text_view_2"
         android:text="Select location and order"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recyclerView2"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintVertical_bias="0.989" />
 </androidx.constraintlayout.widget.ConstraintLayout>

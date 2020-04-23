@@ -83,7 +83,7 @@ public class Restaurant_Adapter extends  RecyclerView.Adapter<Restaurant_Adapter
         Calendar toby = Calendar.getInstance();
         double time = toby.get(Calendar.HOUR_OF_DAY);
         if(time<closing&&time>opening) {
-            holder.textViewRest.setBackgroundColor(Color.parseColor("#00FA9A"));
+            holder.textViewRest.setBackgroundColor(Color.parseColor("#7EE757"));
             holder.textViewRest.setText(restros.getName()+"\nopens: "+(int)restros.getopening()+":00, closes: "+(int)restros.getclosing()+":00");
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,7 +105,7 @@ public class Restaurant_Adapter extends  RecyclerView.Adapter<Restaurant_Adapter
         else
         {
             holder.textViewRest.setText(restros.getName()+" is closed"+"\nopens: "+(int)restros.getopening()+":00, closes: "+(int)restros.getclosing()+":00");
-            holder.textViewRest.setBackgroundColor(Color.parseColor("#800000"));
+            holder.textViewRest.setBackgroundColor(Color.parseColor("#FF2020"));
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
