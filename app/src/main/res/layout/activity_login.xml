@@ -5,8 +5,14 @@
     android:id="@+id/lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/photo7"
     tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/photo5" />
 
     <TextView
         android:id="@+id/textView"
