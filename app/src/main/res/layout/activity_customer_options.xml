@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/phot2"
+    android:background="@drawable/photo13"
     tools:context=".CustomerOptions">
 
 
@@ -78,7 +78,7 @@
         android:id="@+id/regs"
         android:layout_width="150dp"
         android:layout_height="56dp"
-
+        android:textColor="@color/white"
         android:background="@drawable/rb_text_view_2"
         android:text="Regular"
         android:textAllCaps="false"
