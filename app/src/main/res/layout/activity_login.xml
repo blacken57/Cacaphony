@@ -5,7 +5,7 @@
     android:id="@+id/lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/photo1"
+    android:background="@drawable/photo7"
     tools:context=".Login">
 
     <TextView
