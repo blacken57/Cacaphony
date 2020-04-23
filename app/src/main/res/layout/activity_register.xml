@@ -5,8 +5,16 @@
     android:id="@+id/Registeringto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/photo1">
-
+    >
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/photo5"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp" />
 
     <TextView
         android:id="@+id/textView"

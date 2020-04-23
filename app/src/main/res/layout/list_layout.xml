@@ -6,13 +6,13 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="186dp"
-        android:background="@color/white"
+        android:layout_height="191dp"
+        android:layout_margin="5dp"
         android:alpha="0.77"
-        android:layout_margin="5dp">
+        android:background="@color/white">
 
         <RelativeLayout
-            android:layout_width="423dp"
+            android:layout_width="wrap_content"
             android:layout_height="197dp"
             android:padding="8dp">
 
@@ -75,23 +75,25 @@
 
             <Button
                 android:id="@+id/Accept"
-                android:layout_width="366dp"
-                android:layout_height="36dp"
+                android:layout_width="385dp"
+                android:layout_height="57dp"
                 android:layout_alignBottom="@id/textViewPrice"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="133dp"
-                android:layout_marginEnd="34dp"
-                android:layout_marginRight="34dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
 
-                android:layout_marginBottom="-40dp"
+                android:layout_marginBottom="-48dp"
                 android:background="@drawable/rb_text_view_2"
-                android:text="Accept" />
+                android:text="Accept"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
