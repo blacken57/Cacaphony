@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#1667b7</color>
+    <color name="colorPrimaryDark">#10467b</color>
+    <color name="colorAccent">#7a2c1f</color>
     <color name="white">#ffffff</color>
     <color name="darkGrey">#6c6c6c</color>
     <color name="Primary">#795548</color>
@@ -12,6 +12,7 @@
     <color name="Blue">#52A5EB</color>
     <color name="Green">#FFC300</color>
     <color name="Salmon">#E9967A</color>
+    <color name = "bar">#10467B</color>
     <color name="Black">#100303</color>
 
 
