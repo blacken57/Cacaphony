@@ -94,7 +94,7 @@ public class DriverHomePage extends AppCompatActivity {
         });
 
         try{
-        fStore.collection("Orders").whereEqualTo("DeliveryId",DelId).get()
+        fStore.collection("Orders").whereEqualTo("DeliveryId",DelId).whereEqualTo("Assigned",true).whereLessThan("Status",4.0).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {

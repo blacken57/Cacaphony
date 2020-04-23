@@ -85,7 +85,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
 
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
                 mFAuth = FirebaseAuth.getInstance();
                 fStore = FirebaseFirestore.getInstance();
@@ -119,7 +119,8 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                                                     SendingSMS.sendSms(OTP, phoneNumber);
                                                     enableStrictMode();
                                                     Mailer.send("obliviousalwaysforever@gmail.com","wha1sup??",Email,"Order OTP",OTP+" Is yout OTP. Do you understand?");
-
+                                                    Toast.makeText(v.getContext(),  " Selected! Now, go back", Toast.LENGTH_SHORT).show();
+                                                    v.getContext().startActivity(new Intent(context,DriverHomePage.class));
                                                 }
                                                 catch(Exception e){
                                                     System.out.println(e.toString()+ "  Hallelujah");

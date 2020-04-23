@@ -52,7 +52,7 @@ public class PresentOrder extends AppCompatActivity {
 
         DelID = fAUth.getUid();
 
-        fStore.collection("Orders").whereEqualTo("DeliveryId",DelID).whereEqualTo("Assigned",true).get()
+        fStore.collection("Orders").whereEqualTo("DeliveryId",DelID).whereEqualTo("Assigned",true).whereLessThan("Status",4.0).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
