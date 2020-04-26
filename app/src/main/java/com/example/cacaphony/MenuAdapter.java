@@ -94,13 +94,18 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 String[] days = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
                 String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
                 int date = calendar.get(Calendar.DAY_OF_MONTH);
+                String time;
                 if(min<=9){
-                    String time = hour + ":0" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":0" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);}
                 else{
-                    String time = hour + ":" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);
                 }
+                DocumentReference doc = fStore.collection("Customers").document(UserID);
+                Map<String,Object> us = new HashMap<>();
+                us.put("Time",time);
+                doc.set(us,SetOptions.merge());
 
                 user.put("Price", 0.8*arr[0]);
                 documentReference.set(user, SetOptions.merge());
@@ -120,14 +125,18 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 String[] days = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
                 String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
                 int date = calendar.get(Calendar.DAY_OF_MONTH);
+                String time;
                 if(min<=9){
-                    String time = hour + ":0" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":0" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);}
                 else{
-                    String time = hour + ":" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);
                 }
-
+                DocumentReference doc = fStore.collection("Customers").document(UserID);
+                Map<String,Object> us = new HashMap<>();
+                us.put("Time",time);
+                doc.set(us,SetOptions.merge());
                 user.put("Price", 0.8*arr[1]);
                 documentReference.set(user, SetOptions.merge());
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " + 0.8*arr[1]+ " Selected!", Toast.LENGTH_SHORT).show();
@@ -146,14 +155,18 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 String[] days = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
                 String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
                 int date = calendar.get(Calendar.DAY_OF_MONTH);
+                String time;
                 if(min<=9){
-                    String time = hour + ":0" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":0" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);}
                 else{
-                    String time = hour + ":" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);
                 }
-
+                DocumentReference doc = fStore.collection("Customers").document(UserID);
+                Map<String,Object> us = new HashMap<>();
+                us.put("Time",time);
+                doc.set(us,SetOptions.merge());
                 user.put("Price", 0.8*arr[2]);
                 documentReference.set(user, SetOptions.merge());
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " + 0.8*arr[2]+ " Selected!", Toast.LENGTH_SHORT).show();

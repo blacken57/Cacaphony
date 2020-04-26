@@ -124,7 +124,13 @@ public class CustomerHomePage extends AppCompatActivity {
                         name = document.getString("fName");
                         String phone = document.getString("Phone number");
                         String email = document.getString("email");
-                        mName.setText(name+"\n"+"Phone Number: "+phone+"\nEmail: "+email);
+                        String time;
+                        try{time = document.getString("Time");}catch(Exception e){time = "Not ordered before";}
+                        if(time==null)
+                        {
+                            time = "Not ordered yet";
+                        }
+                        mName.setText(name+"\n"+"Phone Number: "+phone+"\nEmail: "+email+"\nLast Ordered: "+time);
                     } else {
                         Log.d(TAG, "No such document");
                     }

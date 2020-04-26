@@ -90,13 +90,18 @@ public class MenuAdapterOc extends  RecyclerView.Adapter<MenuAdapterOc.MenuViewH
                 String[] days = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
                 String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
                 int date = calendar.get(Calendar.DAY_OF_MONTH);
+                String time;
                 if(min<=9){
-                String time = hour + ":0" + min + ", " + day + ", " + date + ".";
+                time = hour + ":0" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);}
                 else{
-                    String time = hour + ":" + min + ", " + day + ", " + date + ".";
+                    time = hour + ":" + min + ", " + day + ", " + date + ".";
                     user.put("Time", time);
                 }
+                DocumentReference doc = fStore.collection("Customers").document(UserID);
+                Map<String,Object> us = new HashMap<>();
+                us.put("Time",time);
+                doc.set(us,SetOptions.merge());
 
                 user.put("Price",arr[0]);
                 documentReference.set(user, SetOptions.merge());

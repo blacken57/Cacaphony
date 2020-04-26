@@ -73,9 +73,10 @@ public class PresentOrder extends AppCompatActivity {
                                             String time;
                                             name = document.getString("fName");
                                             phone = document.getString("Phone number");
-                                            try{time= document.getString("TIme");}
+                                            try{time= document.getString("Time");
+                                            if(time==null){time = "N/A";}}
                                             catch (Exception e){ time = "Not ordered";}
-                                            Info.setText("Customer Name: "+name+"\n"+"Phone number: "+phone+"\n"+"Restaurant: "+Restaurant+"\n"+"Item: "+menuItem+", Price: "+price +"Order Timing: " +time);
+                                            Info.setText("Customer Name: "+name+"\n"+"Phone number: "+phone+"\n"+"Restaurant: "+Restaurant+"\n"+"Item: "+menuItem+", Price: "+price +"\nOrder Timing: " +time);
 
                                         } else {
                                             Log.d(TAG, "No such document");
