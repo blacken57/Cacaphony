@@ -102,9 +102,9 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                     user.put("Time", time);
                 }
 
-                user.put("Price", 0.2*arr[0]);
+                user.put("Price", 0.8*arr[0]);
                 documentReference.set(user, SetOptions.merge());
-                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +0.2*arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +0.8*arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
         holder.priceThree.setOnClickListener(new View.OnClickListener() {
@@ -128,9 +128,9 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                     user.put("Time", time);
                 }
 
-                user.put("Price", 0.2*arr[1]);
+                user.put("Price", 0.8*arr[1]);
                 documentReference.set(user, SetOptions.merge());
-                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " + 0.2*arr[1]+ " Selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " + 0.8*arr[1]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
         holder.priceFour.setOnClickListener(new View.OnClickListener() {
@@ -154,9 +154,9 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                     user.put("Time", time);
                 }
 
-                user.put("Price", 0.2*arr[2]);
+                user.put("Price", 0.8*arr[2]);
                 documentReference.set(user, SetOptions.merge());
-                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " + 0.2*arr[2]+ " Selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " + 0.8*arr[2]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
 
